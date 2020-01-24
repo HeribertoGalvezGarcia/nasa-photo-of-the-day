@@ -1,13 +1,35 @@
 import React from 'react';
-import './Container.css';
+import styled from 'styled-components';
+
+const WrapperDiv = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  ${({image}) => `background-image: url(${image});`}
+`;
+
+const StyledP = styled.p`
+  color: white;
+`;
+
+const StyledH1 = styled.h1`
+  color: white;
+`;
 
 function Container({data: {copyright, date, explanation, hdurl, title}}) {
   return (
-    <div className="container" style={{backgroundImage: `url(${hdurl}`}}>
-      <h1>{title}</h1>
-      <p>{explanation}</p>
-      <p>{copyright} {date}</p>
-    </div>
+    <WrapperDiv image={hdurl}>
+      <StyledH1>{title}</StyledH1>
+      <StyledP>{explanation}</StyledP>
+      <StyledP>{copyright} {date}</StyledP>
+    </WrapperDiv>
   );
 }
 
