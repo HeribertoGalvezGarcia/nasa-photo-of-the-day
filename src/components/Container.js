@@ -24,6 +24,13 @@ const StyledH1 = styled.h1`
 `;
 
 function Container({data: {copyright, date, explanation, hdurl, title}}) {
+
+  if (copyright === undefined) {
+    return (
+      <h1>Loading...</h1>
+    )
+  }
+
   return (
     <WrapperDiv image={hdurl}>
       <StyledH1>{title}</StyledH1>
